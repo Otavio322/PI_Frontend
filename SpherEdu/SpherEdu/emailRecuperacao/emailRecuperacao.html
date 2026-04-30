@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recupere sua Senha — SpherEdu</title>
+    <link rel="stylesheet" href="emailRecuperacao.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+        <section class="form-section">
+            <div class="form-wrapper">
+                <header class="form-header">
+                    <h1>Recupere sua Senha</h1>
+                    <p>Insira o e-mail associado à sua conta e enviaremos as instruções para redefinir sua senha.</p>
+                </header>
+
+                <form id="recoveryForm">
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <button type="submit" id="submitBtn">
+                        <span id="btnText">Enviar link de recuperação</span>
+                        <span id="btnLoader" class="loader hidden">Aguarde...</span>
+                    </button>
+                </form>
+
+                <div class="login-redirect">
+                    <span>Lembrou a senha? <a href="../login/login.html">Fazer Login</a></span>
+                </div>
+            </div>
+
+            <footer class="form-footer">
+                <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
+            </footer>
+        </section>
+
+        <section class="image-section"></section>
+    </main>
+
+    <script src="emailRecuperacao.js"></script>
+</body>
+</html>

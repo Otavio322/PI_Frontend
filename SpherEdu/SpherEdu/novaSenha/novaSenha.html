@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpherEdu - Nova Senha</title>
+  <link rel="stylesheet" href="novaSenha.css" />
+</head>
+<body>
+
+  <div class="left-panel">
+    <div class="form-inner">
+
+      <h2 style="margin-bottom: 15px;">Nova Senha</h2>
+      <p style="margin-bottom: 30px; color: #666;">Crie uma senha forte e segura.</p>
+
+      <!-- Feedback global (erro / sucesso vindo do backend) -->
+      <!-- JS controla via showFeedback('error'|'success', mensagem) -->
+      <div id="form-feedback" class="form-feedback"></div>
+
+      <!-- Campo Nova Senha -->
+      <input
+        type="password"
+        id="input-nova-senha"
+        placeholder="Nova Senha"
+        autocomplete="new-password"
+      />
+      <span class="field-error-msg" id="error-nova-senha"></span>
+
+      <!-- Campo Confirmar Senha -->
+      <input
+        type="password"
+        id="input-confirmar-senha"
+        placeholder="Confirmar Nova Senha"
+        autocomplete="new-password"
+      />
+      <span class="field-error-msg" id="error-confirmar-senha"></span>
+
+      <!--
+        Botão de redefinição.
+        JS adiciona .disabled e muda o texto durante a requisição.
+      -->
+      <button
+        id="btn-redefinir"
+        class="btn-primary"
+        type="button"
+        onclick="handleNovaSenha()"
+      >
+        Redefinir Senha
+      </button>
+
+      <a href="../login/login.html" class="link-voltar">Voltar Para Tela de Login</a>
+
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a>
+    </div>
+  </div>
+
+  <div class="right-panel"></div>
+
+  <script src="novaSenha.js"></script>
+</body>
+</html>

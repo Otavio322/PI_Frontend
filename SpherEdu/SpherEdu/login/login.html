@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpherEdu - Login</title>
+
+  <!-- CSS separado -->
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+<div class="login-wrapper">
+
+  <!-- ===== PAINEL ESQUERDO — Formulário ===== -->
+  <div class="left-panel">
+    <div class="form-inner">
+
+      <!-- Logo -->
+      <div class="logo-area">
+        <img src="logo.png" alt="SpherEdu Logo" />
+        <span class="logo-text">Spher<span>Edu</span></span>
+      </div>
+
+      <p class="subtitle">Bem-vindo! Faça login para continuar</p>
+
+      <!--
+        Feedback global (sucesso / erro vindo do backend).
+        JS controla a visibilidade e a classe: .success ou .error
+        Exemplo: document.getElementById('login-feedback').classList.add('error');
+                 document.getElementById('login-feedback').textContent = 'Credenciais inválidas.';
+                 document.getElementById('login-feedback').style.display = 'block';
+      -->
+      <div id="login-feedback" class="login-feedback" role="alert"></div>
+
+      <!-- Campo Email -->
+      <div class="field">
+        <input
+          type="email"
+          id="input-email"
+          name="email"
+          placeholder="Informe o seu Email"
+          autocomplete="email"
+          required
+        />
+        <!--
+          Mensagem de erro inline para este campo.
+          JS ativa com: el.style.display = 'block'; el.textContent = 'E-mail inválido.';
+        -->
+        <span class="field-error-msg" id="email-error"></span>
+      </div>
+
+      <!-- Campo Senha -->
+      <div class="field">
+        <input
+          type="password"
+          id="input-senha"
+          name="senha"
+          placeholder="Senha"
+          autocomplete="current-password"
+          required
+        />
+        <span class="field-error-msg" id="senha-error"></span>
+      </div>
+
+      <!-- Link "Esqueci minha senha" -->
+      <a href="../emailRecuperacao/emailRecuperacao.html" class="forgot-link">
+        Esqueci minha senha
+      </a>
+
+      <!--
+        Botão de login.
+        Durante a requisição ao backend:
+          - adicione a classe .loading e o atributo disabled
+          - altere o texto para "Entrando..." se quiser
+        Ao concluir, remova essas propriedades.
+      -->
+      <button
+        id="btn-entrar"
+        class="btn-entrar"
+        type="button"
+        onclick="handleLogin()"
+      >
+        Entrar
+      </button>
+
+      <!-- Checkbox "Lembrar acesso" -->
+      <div class="checkbox-row">
+        <input type="checkbox" id="lembrar" name="lembrar" />
+        <label for="lembrar">Lembrar meu acesso</label>
+      </div>
+
+      <hr class="divider" />
+
+      <p class="register-row">
+        Novo por aqui? <a href="#">Crie uma conta agora</a>
+      </p>
+
+    </div>
+  </div><!-- /left-panel -->
+
+  <!-- ===== PAINEL DIREITO — Banner ===== -->
+  <div class="right-panel" role="img" aria-label="Imagem ilustrativa SpherEdu"></div>
+
+</div><!-- /login-wrapper -->
+
+
+<!-- JS separado — lógica de autenticação -->
+<script src="login.js"></script>
+
+</body>
+</html>

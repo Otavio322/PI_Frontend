@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpherEdu – Coordenador</title>
+  <link rel="stylesheet" href="coord.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <button class="hamburger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="sidebar-logo">COORDENADOR</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="dashboard">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item" data-page="alunos">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Alunos
+      </a>
+      <a href="#" class="nav-item" data-page="regras">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+        Regras e Atividades
+      </a>
+      <a href="#" class="nav-item" data-page="certificados">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Certificados
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="../login/login.html" class="nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair do Sistema
+      </a>
+    </div>
+  </aside>
+
+  <!-- ══ TOPBAR ══ -->
+  <header class="topbar">
+    <button class="avatar-btn" aria-label="perfil">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </button>
+  </header>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <!-- ── PAGE: DASHBOARD ── -->
+    <section class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">Olá, Coordenador! Aqui está um quadro geral dos seus alunos.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total de Alunos</div>
+          <div class="stat-value" id="dash-alunos">8</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Solicitações Pendentes</div>
+          <div class="stat-value" id="dash-pendentes">4</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Horas Complementares</div>
+          <div class="stat-value" id="dash-horas">312h</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Taxa de Aprovação</div>
+          <div class="stat-value" id="dash-taxa">83%</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span style="font-weight:700;font-size:.9rem;">Horas por Categoria</span>
+          </div>
+          <div class="chart-placeholder" id="dashChart"></div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span style="font-weight:700;font-size:.9rem;">Certificados Recentes</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aluno</th><th>Status</th><th>Data</th></tr></thead>
+              <tbody id="dashCerts"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE: ALUNOS ── -->
+    <section class="page" id="page-alunos">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Gestão de Alunos</h1>
+        </div>
+        <button class="btn btn-primary" id="btnAddAluno">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Adicionar Aluno
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>RA</th>
+                <th>Aluno</th>
+                <th>Email</th>
+                <th>Turma</th>
+                <th>Turno</th>
+                <th>Período</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="alunosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE: REGRAS E ATIVIDADES ── -->
+    <section class="page" id="page-regras">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Categorias e Regras de Atividades</h1>
+        </div>
+        <button class="btn btn-primary" id="btnAddCategoria">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nova Categoria
+        </button>
+      </div>
+
+      <div class="regras-grid">
+        <!-- Info + config -->
+        <div>
+          <div class="info-panel">
+            <div class="info-panel-title">Configuração do Curso</div>
+            <div style="font-size:.875rem;line-height:1.9;color:var(--text);">
+              <strong>Curso:</strong> Análise e Des. de Sistemas<br>
+              <strong>Carga Horária Total:</strong> 100h
+            </div>
+            <hr style="margin:14px 0;border:none;border-top:1px solid var(--border);">
+            <div class="info-panel-title" style="margin-bottom:12px;">Regras de Automação</div>
+            <div class="toggle-row">
+              <div class="toggle on" onclick="toggleSwitch(this)"></div>
+              <span class="toggle-label" style="font-size:.82rem;">Validação por IA (OCR)</span>
+              <span class="toggle-status active">Ativa</span>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle on" onclick="toggleSwitch(this)"></div>
+              <span class="toggle-label" style="font-size:.82rem;">Notificação automática ao aluno</span>
+              <span class="toggle-status active">Ativa</span>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle" onclick="toggleSwitch(this)"></div>
+              <span class="toggle-label" style="font-size:.82rem;">Alerta de inconsistência de datas</span>
+              <span class="toggle-status inactive">Inativa</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories table -->
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Categoria</th>
+                  <th>Descrição</th>
+                  <th>Limite Máx.</th>
+                  <th>Doc. Obrig.</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="categBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE: CERTIFICADOS (lista) ── -->
+    <section class="page" id="page-certificados">
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Certificados</h1>
+          <p class="page-subtitle">Aprovação de certificados dos alunos</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;" id="certListGrid">
+        <div class="card">
+          <div class="filter-bar" style="padding:0;background:none;box-shadow:none;margin-bottom:12px;">
+            <select class="form-control" id="filterCertStatus" style="max-width:200px;">
+              <option value="">Todos os Status</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Aprovado">Aprovado</option>
+              <option value="Reprovado">Reprovado</option>
+            </select>
+            <button class="btn btn-outline" onclick="filtrarCerts()" style="padding:8px 14px;">Filtrar</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>RA</th>
+                  <th>Aluno</th>
+                  <th>Email</th>
+                  <th>Data</th>
+                  <th>Status</th>
+                  <th>Visualizar</th>
+                </tr>
+              </thead>
+              <tbody id="certsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="cert-stats-sidebar">
+          <div style="font-weight:700;font-size:.85rem;margin-bottom:16px;color:var(--navy);">Resumo de Certificados</div>
+          <div class="cert-stat-bar-row">
+            <div class="cert-stat-bar-label"><span style="color:var(--navy-light);">■ Pendentes</span><span id="statPendentes">4</span></div>
+            <div class="cert-stat-bar-track"><div class="cert-stat-bar-fill" style="background:var(--navy-light);width:40%" id="barPendentes"></div></div>
+          </div>
+          <div class="cert-stat-bar-row">
+            <div class="cert-stat-bar-label"><span style="color:var(--green);">■ Aprovados</span><span id="statAprovados">6</span></div>
+            <div class="cert-stat-bar-track"><div class="cert-stat-bar-fill" style="background:var(--green);width:60%" id="barAprovados"></div></div>
+          </div>
+          <div class="cert-stat-bar-row">
+            <div class="cert-stat-bar-label"><span style="color:var(--red);">■ Reprovados</span><span id="statReprovados">2</span></div>
+            <div class="cert-stat-bar-track"><div class="cert-stat-bar-fill" style="background:var(--red);width:20%" id="barReprovados"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PAGE: CERTIFICADO REVIEW ── -->
+    <section class="page" id="page-cert-review">
+      <button class="back-btn" onclick="voltarCerts()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Voltar para Certificados
+      </button>
+
+      <div class="page-header" style="margin-top:0;">
+        <div>
+          <h1 class="page-title">Certificados</h1>
+          <p class="page-subtitle">Aprovação de certificados dos alunos</p>
+        </div>
+      </div>
+
+      <!-- Student info -->
+      <div class="student-info-box" id="reviewStudentInfo">
+        <strong>Aluno:</strong> —<br>
+        <strong>Email:</strong> —<br>
+        <strong>Carga horária na categoria:</strong> —
+      </div>
+
+      <div class="cert-review-grid">
+        <!-- LEFT: Certificate viewer -->
+        <div>
+          <div class="cert-viewer-box">
+            <div class="cert-viewer-header">Visualizador de Certificado (imagem/PDF)</div>
+            <div class="cert-viewer-body">
+              <img class="cert-img" id="reviewCertImg" src="" alt="Certificado" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: OCR analysis -->
+        <div class="ocr-panel">
+          <div class="ocr-title">Análise Automatizada (OCR)</div>
+
+          <div class="ocr-raw-title">Resultado da Leitura (Texto Bruto):</div>
+          <div class="ocr-raw" id="reviewOcrText">
+            —
+            <button class="ocr-raw-edit" title="Editar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+          </div>
+
+          <div class="ocr-field">
+            <span class="ocr-field-label">Carga Horária Extraída:</span>
+            <span class="ocr-field-value" id="reviewHorasExtracted">—</span>
+          </div>
+          <div class="ocr-field">
+            <span class="ocr-field-label">Assunto identificado:</span>
+            <span class="ocr-field-value" id="reviewAssunto">—</span>
+          </div>
+          <div class="ocr-field">
+            <span class="ocr-field-label">Confiabilidade do OCR:</span>
+            <span class="ocr-confidence" id="reviewConfidence">—</span>
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;margin:8px 0 2px;">
+            <span class="ocr-validation-label">Validação final da Solicitação</span>
+          </div>
+
+          <div class="ocr-field">
+            <span class="ocr-field-label">Categoria Sugerida (pelo OCR):</span>
+            <span class="ocr-field-value" id="reviewCategoria">—</span>
+          </div>
+
+          <div class="ocr-hours-row" style="margin-top:14px;">
+            <span class="ocr-field-label">Carga Horária para validação:</span>
+            <input type="number" class="ocr-hours-input" id="reviewHorasValidacao" value="10" min="1" />
+          </div>
+
+          <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);letter-spacing:.5px;margin-bottom:8px;">Ações:</div>
+          <div class="cert-action-row">
+            <button class="btn btn-success" onclick="aprovarCert()">Aprovar Solicitação</button>
+            <button class="btn btn-danger"  onclick="reprovarCert()">Reprovar Solicitação</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══ MODAL: ALUNO ══ -->
+<div class="modal-overlay" id="modalAluno">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modalAlunoTitle">Adicionar Aluno</span>
+      <button class="modal-close" onclick="closeModal('modalAluno')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="alunoIdx" value="-1" />
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">RA</label>
+          <input class="form-control" id="alunoRA" placeholder="Ex: 004005006" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nome Completo</label>
+          <input class="form-control" id="alunoNome" placeholder="Ex: João Silva" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email Institucional</label>
+          <input class="form-control" id="alunoEmail" type="email" placeholder="aluno@edu.pe.senac.br" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Turma</label>
+          <input class="form-control" id="alunoTurma" placeholder="Ex: Turma ADS021" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Turno</label>
+          <select class="form-control" id="alunoTurno">
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Período</label>
+          <input class="form-control" id="alunoPeriodo" type="number" min="1" max="8" placeholder="Ex: 1" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Senha</label>
+        <input class="form-control" id="alunoSenha" type="password" placeholder="••••••••" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalAluno')" style="color:var(--text-muted);">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarAluno()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: CATEGORIA ══ -->
+<div class="modal-overlay" id="modalCategoria">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modalCatTitle">Nova Categoria</span>
+      <button class="modal-close" onclick="closeModal('modalCategoria')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="catIdx" value="-1" />
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nome da Categoria</label>
+          <input class="form-control" id="catNome" placeholder="Ex: Cursos" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Limite Máximo (horas)</label>
+          <input class="form-control" type="number" id="catLimite" placeholder="Ex: 60" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descrição</label>
+        <input class="form-control" id="catDesc" placeholder="Ex: Cursos online e presenciais" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Documentação Obrigatória</label>
+          <select class="form-control" id="catDoc">
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-control" id="catStatus">
+            <option value="Ativa">Ativa</option>
+            <option value="Inativa">Inativa</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalCategoria')" style="color:var(--text-muted);">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarCategoria()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: CONFIRMAR EXCLUSÃO ══ -->
+<div class="modal-overlay modal-danger" id="modalConfirm">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <span class="modal-title">Confirmar Exclusão</span>
+      <button class="modal-close" onclick="closeModal('modalConfirm')">&times;</button>
+    </div>
+    <div class="modal-body" style="text-align:center;padding:32px 24px;">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.5" style="margin-bottom:12px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p id="confirmMsg" style="font-size:.95rem;color:var(--text);">Tem certeza que deseja remover este registro?</p>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-top:6px;">Esta ação não poderá ser desfeita.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modalConfirm')" style="color:var(--text-muted);">Cancelar</button>
+      <button class="btn btn-danger" id="confirmBtn">Excluir</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NOTIFICATION OVERLAY ══ -->
+<div class="notif-overlay" id="notifOverlay" onclick="closeNotif()">
+  <div class="notif-card">
+    <div class="notif-text" id="notifText">—</div>
+    <div class="notif-icon">
+      <svg width="72" height="72" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="12" width="56" height="40" rx="4" stroke="white" stroke-width="3" fill="none"/>
+        <polyline points="4,12 32,36 60,12" stroke="white" stroke-width="3" fill="none"/>
+        <polyline points="40,46 52,58" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+        <polyline points="46,52 58,40" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══ -->
+<div class="toast" id="toast"></div>
+
+<script src="coord.js"></script>
+</body>
+</html>

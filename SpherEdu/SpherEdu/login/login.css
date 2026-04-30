@@ -1,0 +1,50 @@
+/* =============================================
+   SpherEdu — Login Page Styles
+   ============================================= */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; font-family: 'Segoe UI', sans-serif; }
+
+.login-wrapper { display: flex; width: 100vw; height: 100vh; overflow: hidden; }
+
+.left-panel { width: 32%; min-width: 420px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #ffffff; padding: 0 48px; z-index: 2; }
+
+.form-inner { width: 100%; max-width: 340px; display: flex; flex-direction: column; }
+
+.logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 45px; }
+.logo-area img { width: 200px; height: auto; margin-bottom: 20px; }
+
+.logo-text { font-size: 32px; font-weight: 400; color: #888; letter-spacing: 0.5px; }
+.logo-text span { color: #1e4fa8; font-weight: 700; }
+
+.subtitle { font-size: 15px; color: #666; margin-bottom: 30px; text-align: center; }
+
+.field { width: 100%; margin-bottom: 18px; }
+.field input { width: 100%; padding: 16px; font-size: 14px; border: 1.5px solid #d1d5db; border-radius: 8px; outline: none; }
+
+.btn-entrar { width: 100%; padding: 16px; background: #1e4fa8; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-bottom: 20px; transition: background 0.3s; }
+.btn-entrar:hover { background: #163d88; }
+
+.forgot-link { font-size: 13px; color: #1e4fa8; text-decoration: none; margin-bottom: 25px; align-self: flex-start; font-weight: 600; }
+
+.checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+
+.divider { width: 100%; border: none; border-top: 1px solid #eee; margin-bottom: 25px; }
+
+.register-row { font-size: 14px; color: #666; text-align: center; }
+.register-row a { color: #1e4fa8; text-decoration: none; font-weight: 600; }
+
+.right-panel { flex: 1; height: 100%; background: url('banner.png') no-repeat center center; background-size: cover; }
+
+/* =============================================
+   Classes auxiliares para integração backend
+   (não afetam o design por padrão — só ativam via JS)
+   ============================================= */
+
+.login-feedback { display: none; width: 100%; padding: 12px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 16px; }
+.login-feedback.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.login-feedback.error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+
+.field-error-msg { display: none; font-size: 12px; color: #e53935; margin-top: 5px; }
+.field input.input-error { border-color: #e53935; }
+.btn-entrar:disabled { opacity: 0.65; cursor: not-allowed; }
