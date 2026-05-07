@@ -43,13 +43,14 @@
                         <tr>
                             <th>Matricula</th>
                             <th>Nome</th>
-                            <th>Data de Entrada</th>
+                            <th>Email</th>
+                            <th>Senha</th>
                             <th>Cursos</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody id="student-table-body">
-                    </tbody>
+                        </tbody>
                 </table>
 
             </section>
@@ -60,6 +61,10 @@
         <div class="modal-content">
             <form id="form-aluno">
                 <div class="input-group">
+                    <label>Matricula</label>
+                    <input type="text" id="m-matricula" required>
+                </div>
+                <div class="input-group">
                     <label>Nome</label>
                     <input type="text" id="m-nome" required>
                 </div>
@@ -69,16 +74,13 @@
                 </div>
                 <div class="input-group">
                     <label>Senha</label>
-                    <input type="password" id="m-senha">
+                    <input type="password" id="m-senha" required>
                 </div>
                 <div class="input-group">
-                    <label>Data de Entrada</label>
-                    <input type="date" id="m-dataEntrada" required>
-                </div>
-                <div class="input-group">
-                    <label>Cursos</label>
-                    <div class="checkbox-group" id="m-cursos-container"></div>
-                </div>
+    <label>Cursos</label>
+    <div class="checkbox-group" id="m-cursos-container">
+    </div>
+</div>
                 <div class="modal-buttons">
                     <button type="button" class="btn-delete" onclick="deleteStudent()">Excluir</button>
                     <button type="submit" class="btn-save">Salvar</button>
@@ -87,7 +89,8 @@
         </div>
     </div>
 
-    <script src="../../Api.js"></script>
+    <script src="../../api.js"></script>
+
     <script src="alunos.js"></script>
 </body>
 </html>
