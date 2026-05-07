@@ -66,13 +66,13 @@ function openModal(matricula = null) {
         });
     } else {
         form.reset();
-        document.getElementById('m-matricula').disabled = false;
+        document.getElementById('m-matricula').disabled = true;
+        document.getElementById('m-matricula').placeholder = 'Gerada automaticamente';
     }
 }
 
 form.onsubmit = async (e) => {
     e.preventDefault();
-    const formMatricula = document.getElementById('m-matricula').value;
     const formNome = document.getElementById('m-nome').value;
     const formEmail = document.getElementById('m-email').value;
     const formSenha = document.getElementById('m-senha').value;
@@ -88,10 +88,17 @@ form.onsubmit = async (e) => {
                 body: JSON.stringify(body)
             });
         } else {
+            const usuarioRes = await fetch(API + '/usuarios', {
+                method: 'POST',
+                headers: authHeaders(),
+                body: JSON.stringify({ login: formEmail, email: formEmail, senha: formSenha, telefone: '00000000000', tipo_usuario: 'aluno' })
+            });
+            const usuarioData = await usuarioRes.json();
+
             await fetch(API + '/alunos', {
                 method: 'POST',
                 headers: authHeaders(),
-                body: JSON.stringify({ matricula: formMatricula, nome: formNome, email: formEmail, senha: formSenha, cursos: selectedCursosIds })
+                body: JSON.stringify({ nome: formNome, dataEntrada: new Date().toISOString().split('T')[0], usuario_idusuario: usuarioData.id, cursos: selectedCursosIds })
             });
         }
         modal.style.display = 'none';
@@ -115,5 +122,3 @@ async function deleteStudent() {
 
 window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
 window.openModal = openModal;
-
-carregarDados();
