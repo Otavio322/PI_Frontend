@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "spheredu",
+  "compatibility_date": "2026-05-07",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "SpherEdu"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
