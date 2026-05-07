@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regras - Super Admin</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SUPER ADMIN</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../Cursos/cursos.html">Cursos</a></li>
+                    <li><a href="regras.html" class="active">Regras</a></li>
+                    <li><a href="../Coordenadores/coordenadores.html">Coordenadores</a></li>
+                    <li><a href="../Alunos/alunos.html">Alunos</a></li>
+                    <li><a href="../Atividades/avaliar_atividades.html">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../../Login/login.html">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            
+            <section class="content-area">
+                <div class="header-geral">
+                    <div style="display: flex; align-items: center; gap: 20px;">
+                        <h1>Regras</h1>
+                        <select id="filtro-curso" class="select-padrao">
+                        </select>
+                    </div>
+                    <button class="btn-add" onclick="openModal()">+ adicionar</button>
+                </div>
+
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Mínima</th> 
+                            <th>Máxima</th> 
+                            <th>Permitida</th> 
+                            <th>Regra/Descrição</th> 
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="regras-table-body">
+                        </tbody>
+                </table>
+                <div id="contador-horas" class="contador"></div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-regras" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="modalTitulo">Nova Categoria</h2>
+            <form id="form-regras">
+                <div class="input-group">
+                    <label>Nome da Categoria</label>
+                    <input type="text" id="m-nome" required>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label>C.H. Mínima</label>
+                        <input type="number" id="m-min">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label>C.H. Máxima</label>
+                        <input type="number" id="m-max" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Carga Horária Permitida (Total)</label>
+                    <input type="number" id="m-permitida" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Regra de Validação / Descrição</label>
+                    <input type="text" id="m-regra">
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-delete" onclick="deleteRegra()">Excluir</button>
+                    <button type="submit" class="btn-save">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../api.js"></script>
+
+    <script src="regras.js"></script>
+</body>
+</html>

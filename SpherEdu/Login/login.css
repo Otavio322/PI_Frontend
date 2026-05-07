@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: #005691;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #005691;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+input::placeholder {
+    color: #666;
+}
+
+.forgot-password {
+    display: block;
+    text-align: left;
+    color: #005691;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: #005691;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #003d66;
+}
+
+.image-section {
+    flex: 1.5;
+    background-image: url('sua-imagem-background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .image-section {
+        display: none;
+    }
+}

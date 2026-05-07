@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Super Admin</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SUPER ADMIN</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="cursos.html" class="active">Cursos</a></li>
+                    <li><a href="../Regras/regras.html">Regras</a></li>
+                    <li><a href="../Coordenadores/coordenadores.html">Coordenadores</a></li>
+                    <li><a href="../Alunos/alunos.html">Alunos</a></li>
+                    <li><a href="../Atividades/avaliar_atividades.html">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../../Login/login.html">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            <section class="content-area">
+
+
+                <div class="header-geral">
+                    <h1>Cursos</h1>
+                    <button class="btn-add" onclick="openModal()">+ adicionar</button>
+                </div>
+
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Carga horária</th>
+                            <th>Categoria</th>
+                            <th>Turno</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cursos-table-body">
+                        </tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-cursos" class="modal-overlay">
+        <div class="modal-content">
+            <form id="form-cursos">
+                <div class="input-group">
+                    <label>Nome</label>
+                    <input type="text" id="m-nome" required>
+                </div>
+                <div class="input-group">
+                    <label>Carga hoária</label>
+                    <input type="text" id="m-carga_horária" required>
+                </div>
+                <div class="input-group">
+                    <label>Categoria</label>
+                    <input type="text" id="m-categoria" required>
+                </div>
+                <div class="input-group">
+                    <div class="input-group">
+                <label>Tipo</label>
+                <select id="m-tipo">
+                    <option value="Presencial">Presencial</option>
+                    <option value="EAD">EAD</option>
+                    <option value="Hibrido">Hibrido</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Turno</label>
+                <select id="m-turno">
+                    <option value="Manha">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                </select>
+            </div>
+   
+                <div class="modal-buttons">
+                    <button type="button" class="btn-delete" onclick="deleteCurso()">Excluir</button>
+                    <button type="submit" class="btn-save">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../api.js"></script>
+
+    <script src="cursos.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos - Coordenador</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>COORDENADOR</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../Regras/regras.html">Regras</a></li>
+                    <li><a href="alunos.html" class="active">Alunos</a></li>
+                    <li><a href="../Atividades/avaliar_atividades.html">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../../Login/login.html">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            
+            <section class="content-area">
+                
+                <div class="header-geral">
+                    <h1>Alunos</h1>
+                    <button class="btn-add" onclick="openModal()">+ adicionar</button>
+                </div>
+
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Matricula</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Cursos</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body">
+                        </tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-aluno" class="modal-overlay">
+        <div class="modal-content">
+            <form id="form-aluno">
+                <div class="input-group">
+                    <label>Matricula</label>
+                    <input type="text" id="m-matricula" required>
+                </div>
+                <div class="input-group">
+                    <label>Nome</label>
+                    <input type="text" id="m-nome" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="m-email" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="m-senha" required>
+                </div>
+                <div class="input-group">
+    <label>Cursos</label>
+    <div class="checkbox-group" id="m-cursos-container">
+    </div>
+</div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-delete" onclick="deleteStudent()">Excluir</button>
+                    <button type="submit" class="btn-save">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../api.js"></script>
+
+    <script src="alunos.js"></script>
+</body>
+</html>

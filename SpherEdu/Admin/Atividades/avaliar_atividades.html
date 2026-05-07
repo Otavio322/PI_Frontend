@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades - Super Admin</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header"><h2>SUPER ADMIN</h2></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../Cursos/cursos.html">Cursos</a></li>
+                    <li><a href="../Regras/regras.html">Regras</a></li>
+                    <li><a href="../Coordenadores/coordenadores.html">Coordenadores</a></li>
+                    <li><a href="../Alunos/alunos.html">Alunos</a></li>
+                    <li><a href="avaliar_atividades.html" class="active">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer"><a href="../../Login/login.html">Sair</a></div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            
+            <section class="content-area">
+                <div class="header-geral">
+                    <h1>Avaliação de Atividades</h1>
+                    <div style="display: flex; gap: 10px;">
+                        <select id="filtro-status" class="select-padrao">
+                            <option value="todos">Todos os Status</option>
+                            <option value="pendente" selected>Pendentes</option>
+                            <option value="aprovada">Aprovadas</option>
+                            <option value="rejeitada">Rejeitadas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Data do Envio</th>
+                            <th>Aluno</th>
+                            <th>Atividade Solicitada</th>
+                            <th>Horas</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-submissoes"></tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-avaliacao" class="modal-overlay">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Aprovação de certificados dos alunos</h2>
+                <span class="close" onclick="fecharModal()">&times;</span>
+            </div>
+            
+            <div id="modal-info-header" class="modal-info-header">
+                </div>
+
+            <div class="modal-split">
+                <div class="modal-left">
+                    <div class="box-title">Visualizador de Certificado (imagem/PDF)</div>
+                    <div class="cert-viewer">
+                        <img id="cert-img" src="" alt="Certificado não encontrado">
+                    </div>
+                </div>
+
+                <div class="modal-right">
+                    <div class="box-title">Análise Automatizada (OCR)</div>
+                    <div class="ocr-results">
+                        <p><strong>Resultado da Leitura (Texto Bruto):</strong></p>
+                        <textarea id="ocr-raw-text" rows="4" readonly></textarea>
+                        <p><strong>Carga Horária Extraída:</strong> <span id="ocr-horas">--</span></p>
+                        <p><strong>Assunto identificado:</strong> <span id="ocr-assunto">--</span></p>
+                        <p><strong>Confiabilidade do OCR:</strong> <span style="color: #27ae60; font-weight: bold;">98%</span></p>
+                    </div>
+
+                    <div class="validation-form">
+                        <h4 style="text-align: right; margin: 0;">Validação final da Solicitação</h4>
+                        
+                        <label>Categoria Sugerida (pelo OCR):</label>
+                        <input type="text" id="val-categoria" readonly>
+                        
+                        <label>Carga Horária pra validação:</label>
+                        <input type="number" id="val-horas">
+                        
+                        <label>Ações / Observações (Opcional):</label>
+                        <textarea id="observacao-admin" placeholder="Motivo da reprovação ou nota..."></textarea>
+                        
+                        <div class="modal-actions">
+                            <button class="btn-aprovar" onclick="processarAvaliacao('aprovada')">Aprovar Solicitação</button>
+                            <button class="btn-rejeitar" onclick="processarAvaliacao('rejeitada')">Reprovar Solicitação</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../api.js"></script>
+    <script src="avaliar_atividades.js"></script>
+</body>
+</html>

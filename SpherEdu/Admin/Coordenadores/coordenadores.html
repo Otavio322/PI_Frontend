@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordenadores - Super Admin</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SUPER ADMIN</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                   <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+                    <li><a href="../Cursos/cursos.html">Cursos</a></li>
+                    <li><a href="../Regras/regras.html">Regras</a></li>
+                    <li><a href="coordenadores.html" class="active">Coordenadores</a></li>
+                    <li><a href="../Alunos/alunos.html">Alunos</a></li>
+                    <li><a href="../Atividades/avaliar_atividades.html">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../../Login/login.html">Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            
+            <section class="content-area">
+                
+                <div class="header-geral">
+                    <h1>Coordenadores</h1>
+                    <button class="btn-add" onclick="openModal()">+ adicionar</button>
+                </div>
+
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Telefone</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Cursos designados</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="coordenadores-table-body">
+                        </tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-coordenadores" class="modal-overlay">
+        <div class="modal-content">
+            <form id="form-coordenadores">
+                <div class="input-group">
+                    <label>Telefone</label>
+                    <input type="text" inputmode="numeric" id="m-telefone" required>
+                </div>
+                <div class="input-group">
+                    <label>Nome</label>
+                    <input type="text" id="m-nome" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="m-email" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="m-senha" required>
+                </div>
+                <div class="input-group">
+    <label>Cursos</label>
+    <div class="checkbox-group" id="m-cursos-container">
+        <label><input type="checkbox" name="curso" value="ADS"> ADS</label>
+        <label><input type="checkbox" name="curso" value="Direito"> Direito</label>
+        <label><input type="checkbox" name="curso" value="Gastronomia"> Gastronomia</label>
+    </div>
+</div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-delete" onclick="deleteCoordenador()">Excluir</button>
+                    <button type="submit" class="btn-save">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../api.js"></script>
+
+    <script src="coordenadores.js"></script>
+</body>
+</html>

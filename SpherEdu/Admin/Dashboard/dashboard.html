@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin</title>
+    <link rel="stylesheet" href="../../spheredu.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header"><h2>SUPER ADMIN</h2></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="../Cursos/cursos.html">Cursos</a></li>
+                    <li><a href="../Regras/regras.html">Regras</a></li>
+                    <li><a href="../Coordenadores/coordenadores.html">Coordenadores</a></li>
+                    <li><a href="../Alunos/alunos.html">Alunos</a></li>
+                    <li><a href="../Atividades/avaliar_atividades.html">Atividades</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer"><a href="../../Login/login.html">Sair</a></div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar"></header>
+            <section class="content-area">
+                
+                <div class="header-geral">
+                    <h1>Painel de Controle</h1>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Total de Alunos</h3>
+                        <p id="total-alunos">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cursos Ativos</h3>
+                        <p id="cursos-ativos">0</p>
+                    </div>
+                    <div class="card card-pendente">
+                        <h3>Submissões Pendentes</h3>
+                        <p id="submissoes-pendentes">0</p>
+                    </div>
+                    <div class="card card-sucesso">
+                        <h3>Horas Validadas</h3>
+                        <p id="horas-validadas">0h</p>
+                    </div>
+                </div>
+
+                <div class="header-geral" style="margin-top: 40px;">
+                    <h2>E-mails Enviados</h2>
+                </div>
+                <table class="table-geral">
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Destinatário</th>
+                            <th>Assunto</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-emails"></tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="../../api.js"></script>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SpherEdu</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="content-wrapper">
+                <img src="logo.png" alt="SpherEdu Logo" class="logo">
+                <h1>SpherEdu</h1>
+                <p class="subtitle">Faça login para mais informações</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Informe o seu Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="Senha" required>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                    
+                    <button type="submit" class="btn-login">ENTRAR</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="image-section"></div>
+    </div>
+
+    <script src="../api.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
