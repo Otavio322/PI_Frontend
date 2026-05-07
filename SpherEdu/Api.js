@@ -1,4 +1,4 @@
-const API = 'https://spheredu.otta12.workers.dev';
+const API = 'https://spheredu.onrender.com';
 
 function getToken() {
     return localStorage.getItem('token');
