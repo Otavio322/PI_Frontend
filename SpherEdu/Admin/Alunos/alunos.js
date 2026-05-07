@@ -41,7 +41,7 @@ function renderTable() {
                 <td>${aluno.email || ''}</td>
                 <td>••••••</td>
                 <td>${cursoNomes}</td>
-                <td><span class="btn-edit" onclick="openModal(${aluno.matricula})">Editar</span></td>
+                <td><span class="btn-edit" onclick="openModal('${aluno.matricula}')">Editar</span></td>
             </tr>
         `;
     });
@@ -53,7 +53,7 @@ function openModal(matricula = null) {
     renderCursosCheckboxes();
 
     if (matricula !== null) {
-        const aluno = _alunos.find(a => a.matricula === matricula);
+        const aluno = _alunos.find(a => String(a.matricula) === String(matricula));
         document.getElementById('m-matricula').value = aluno.matricula;
         document.getElementById('m-matricula').disabled = true;
         document.getElementById('m-nome').value = aluno.nome;
@@ -72,7 +72,7 @@ function openModal(matricula = null) {
 
 form.onsubmit = async (e) => {
     e.preventDefault();
-    const formMatricula = parseInt(document.getElementById('m-matricula').value);
+    const formMatricula = document.getElementById('m-matricula').value;
     const formNome = document.getElementById('m-nome').value;
     const formEmail = document.getElementById('m-email').value;
     const formSenha = document.getElementById('m-senha').value;
