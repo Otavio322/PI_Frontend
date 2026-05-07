@@ -20,18 +20,6 @@ async function carregarDados() {
     renderTable();
 }
 
-function getMeusCursosIds() {
-    return (Array.isArray(_meusCursos) ? _meusCursos : []).map(c => c.idCurso);
-}
-
-function getAlunosFiltrados() {
-    const meusCursosIds = getMeusCursosIds();
-    return (Array.isArray(_alunos) ? _alunos : []).filter(aluno => {
-        const idsCursosAluno = (aluno.cursos || []).map(c => c.idCurso);
-        return idsCursosAluno.some(id => meusCursosIds.includes(id));
-    });
-}
-
 function renderCursosCheckboxes() {
     if (!cursosContainer) return;
     cursosContainer.innerHTML = '';
@@ -46,8 +34,8 @@ function renderCursosCheckboxes() {
 function renderTable() {
     if (!tableBody) return;
     tableBody.innerHTML = '';
-    getAlunosFiltrados().forEach(aluno => {
-        const cursoNomes = (aluno.cursos || []).map(c => c.nome).join(', ');
+    (Array.isArray(_alunos) ? _alunos : []).forEach(aluno => {
+        const cursoNomes = (aluno.cursos || []).map(c => c.nome).join(', ') || '<span style="color:gray">Sem curso</span>';
         tableBody.innerHTML += `
             <tr>
                 <td>${aluno.matricula}</td>
@@ -65,7 +53,7 @@ function openModal(matricula = null) {
     renderCursosCheckboxes();
 
     if (matricula !== null) {
-        const aluno = _alunos.find(a => a.matricula === matricula);
+        const aluno = _alunos.find(a => String(a.matricula) === String(matricula));
         document.getElementById('m-matricula').value = aluno.matricula;
         document.getElementById('m-nome').value = aluno.nome;
 
