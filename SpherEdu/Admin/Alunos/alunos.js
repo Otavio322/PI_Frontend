@@ -58,6 +58,7 @@ function openModal(matricula = null) {
         document.getElementById('m-matricula').disabled = true;
         document.getElementById('m-nome').value = aluno.nome;
         document.getElementById('m-email').value = aluno.email || '';
+        document.getElementById('m-telefone').value = '';
         document.getElementById('m-senha').value = '******';
 
         const idsCursos = (aluno.cursos || []).map(c => c.idCurso);
@@ -75,6 +76,7 @@ form.onsubmit = async (e) => {
     e.preventDefault();
     const formNome = document.getElementById('m-nome').value;
     const formEmail = document.getElementById('m-email').value;
+    const formTelefone = document.getElementById('m-telefone').value;
     const formSenha = document.getElementById('m-senha').value;
     const selectedCursosIds = Array.from(document.querySelectorAll('input[name="curso"]:checked')).map(cb => parseInt(cb.value));
 
@@ -91,7 +93,7 @@ form.onsubmit = async (e) => {
             const usuarioRes = await fetch(API + '/usuarios', {
                 method: 'POST',
                 headers: authHeaders(),
-                body: JSON.stringify({ login: formEmail, email: formEmail, senha: formSenha, telefone: '00000000000', tipo_usuario: 'aluno' })
+                body: JSON.stringify({ login: formEmail, email: formEmail, senha: formSenha, telefone: formTelefone, tipo_usuario: 'aluno' })
             });
             const usuarioData = await usuarioRes.json();
 
@@ -122,4 +124,5 @@ async function deleteStudent() {
 
 window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
 window.openModal = openModal;
+
 carregarDados();
