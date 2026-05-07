@@ -1,4 +1,4 @@
-const API = 'https://spheredu.onrender.com';
+const API = 'https://spheredu.onrender.com/api';
 
 function getToken() {
     return localStorage.getItem('token');
