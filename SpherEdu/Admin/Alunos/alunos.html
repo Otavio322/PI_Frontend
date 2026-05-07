@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../../spheredu.css">
 </head>
 <body>
-
     <div class="admin-container">
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -27,17 +26,13 @@
                 <a href="../../Login/login.html">Sair</a>
             </div>
         </aside>
-
         <main class="main-content">
             <header class="top-bar"></header>
-            
             <section class="content-area">
-                
                 <div class="header-geral">
                     <h1>Alunos</h1>
                     <button class="btn-add" onclick="openModal()">+ adicionar</button>
                 </div>
-
                 <table class="table-geral">
                     <thead>
                         <tr>
@@ -49,20 +44,17 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody id="student-table-body">
-                        </tbody>
+                    <tbody id="student-table-body"></tbody>
                 </table>
-
             </section>
         </main>
     </div>
-
     <div id="modal-aluno" class="modal-overlay">
         <div class="modal-content">
             <form id="form-aluno">
                 <div class="input-group">
                     <label>Matricula</label>
-                    <input type="text" id="m-matricula" required>
+                    <input type="text" id="m-matricula" placeholder="Gerada automaticamente" disabled>
                 </div>
                 <div class="input-group">
                     <label>Nome</label>
@@ -73,14 +65,17 @@
                     <input type="email" id="m-email" required>
                 </div>
                 <div class="input-group">
+                    <label>Telefone</label>
+                    <input type="text" id="m-telefone" required>
+                </div>
+                <div class="input-group">
                     <label>Senha</label>
                     <input type="password" id="m-senha" required>
                 </div>
                 <div class="input-group">
-    <label>Cursos</label>
-    <div class="checkbox-group" id="m-cursos-container">
-    </div>
-</div>
+                    <label>Cursos</label>
+                    <div class="checkbox-group" id="m-cursos-container"></div>
+                </div>
                 <div class="modal-buttons">
                     <button type="button" class="btn-delete" onclick="deleteStudent()">Excluir</button>
                     <button type="submit" class="btn-save">Salvar</button>
@@ -88,9 +83,7 @@
             </form>
         </div>
     </div>
-
     <script src="../../api.js"></script>
-
     <script src="alunos.js"></script>
 </body>
 </html>
